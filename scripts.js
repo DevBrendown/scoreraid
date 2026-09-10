@@ -7,7 +7,7 @@
    1) TEMAS (com ícone para badges e roleta)
 ---------------------------------------------------------------------- */
 const TEMAS = [
-  { id: "matematica",  nome: "Matemática",              icone: "🧮", cor: "#5B8DEF" },
+  { id: "matematica",  nome: "Matemática",               icone: "🧮", cor: "#5B8DEF" },
   { id: "geografia",   nome: "Geografia",                icone: "🌍", cor: "#4FB477" },
   { id: "esportes",    nome: "Esportes",                 icone: "⚽", cor: "#E2725B" },
   { id: "tecnologia",  nome: "Tecnologia",               icone: "💻", cor: "#6C63FF" },
@@ -79,19 +79,21 @@ const BANCO_PERGUNTAS = [
   pt("trabalho","facil","O que significa a sigla 'RH' em uma empresa?",["Recursos Humanos","Relação Hierárquica","Registro Horário","Renda Hábil"],0),
   pt("trabalho","dificil","O que é 'trabalho híbrido'?",["Modelo que combina dias de trabalho presencial e remoto","Um trabalho feito por duas pessoas ao mesmo tempo","Um contrato de meio período apenas","Um cargo de estágio"],0),
 
-  // ---------------- CURIOSIDADES ----------------
-  pt("curiosidades","facil","Qual é o maior mamífero do mundo?",["Elefante-africano","Baleia-azul","Girafa","Urso-polar"],1),
-  pt("curiosidades","facil","Quantos ossos tem, em média, o corpo humano adulto?",["106","156","206","256"],2),
-  pt("curiosidades","dificil","Qual é o metal líquido à temperatura ambiente, usado em termômetros antigos?",["Ferro","Mercúrio","Alumínio","Cobre"],1),
-  pt("curiosidades","facil","Qual animal é conhecido por mudar de cor para se camuflar?",["Camaleão","Coelho","Pinguim","Canguru"],0),
-  pt("curiosidades","dificil","Qual é a montanha mais alta do mundo?",["K2","Monte Everest","Aconcágua","Kilimanjaro"],1),
-  pt("curiosidades","dificil","Qual rede social foi originalmente criada para estudantes de Harvard?",["Instagram","TikTok","Facebook","Twitter"],2),
-  pt("curiosidades","facil","Qual é o maior planeta do Sistema Solar?",["Terra","Saturno","Júpiter","Netuno"],2),
-  pt("curiosidades","dificil","O que é um 'meme' na internet?",["Um tipo de vírus de computador","Uma ideia, imagem ou vídeo que se espalha rapidamente de forma humorística ou viral","Um aplicativo de mensagens","Um formato de arquivo de vídeo"],1),
-  pt("curiosidades","dificil","Qual é o elemento químico mais abundante no universo?",["Oxigênio","Carbono","Hidrogênio","Hélio"],2),
-  pt("curiosidades","dificil","Qual é o país com o maior número de fusos horários no mundo?",["Estados Unidos","Rússia","China","França"],3),
-  pt("curiosidades","dificil","Qual é o menor país do mundo em extensão territorial?",["Mônaco","San Marino","Vaticano","Liechtenstein"],2),
-  pt("curiosidades","dificil","Aproximadamente, quanto tempo a luz do Sol leva para chegar à Terra?",["8 segundos","8 minutos","8 horas","8 dias"],1),
+  // ---------------- CURIOSIDADES (nível super difícil) ----------------
+  pt("curiosidades","dificil","Qual é o único mamífero capaz de voo verdadeiro, batendo asas em vez de apenas planar?",["Esquilo-voador","Morcego","Colugo","Petauro-do-açúcar"],1),
+  pt("curiosidades","dificil","Qual elemento químico possui o maior número atômico já confirmado?",["Oganessônio","Urânio","Plutônio","Neptúnio"],0),
+  pt("curiosidades","dificil","Segundo a tradição, em que ano a cidade de Roma foi fundada?",["146 a.C.","753 a.C.","27 a.C.","44 a.C."],1),
+  pt("curiosidades","dificil","Como é chamado o raro fenômeno óptico visto por instantes no horizonte durante o nascer ou pôr do sol?",["Aurora boreal","Halo solar","Raio verde","Fogo de Santelmo"],2),
+  pt("curiosidades","dificil","Qual é a proteína mais abundante no corpo humano?",["Queratina","Colágeno","Actina","Hemoglobina"],1),
+  pt("curiosidades","dificil","Qual antigo império é geralmente creditado por criar o primeiro sistema postal organizado da história?",["Império Romano","Império Persa","Império Egípcio","Dinastia Han"],1),
+  pt("curiosidades","dificil","Qual é o nome do menor osso do corpo humano, localizado no ouvido?",["Martelo","Bigorna","Estribo","Cóclea"],2),
+  pt("curiosidades","dificil","Quantos corações tem um polvo?",["1","2","3","4"],2),
+  pt("curiosidades","dificil","Qual é o gás mais abundante na atmosfera terrestre?",["Oxigênio","Gás carbônico","Nitrogênio","Hidrogênio"],2),
+  pt("curiosidades","dificil","Qual filósofo grego é considerado o fundador da lógica formal?",["Sócrates","Platão","Aristóteles","Pitágoras"],2),
+  pt("curiosidades","dificil","Qual foi o nome do primeiro satélite artificial colocado em órbita, em 1957?",["Vostok 1","Sputnik 1","Explorer 1","Apollo 1"],1),
+  pt("curiosidades","dificil","Qual sistema de numeração de base 60, usado até hoje para medir tempo e ângulos, foi criado pelos antigos sumérios e babilônios?",["Decimal","Binário","Sexagesimal","Hexadecimal"],2),
+  pt("curiosidades","dificil","Qual é o único continente que não possui répteis terrestres nativos?",["Austrália","América do Sul","Antártida","Ásia"],2),
+  pt("curiosidades","dificil","Qual escala é tradicionalmente usada para medir a magnitude de um terremoto?",["Escala Kelvin","Escala Richter","Escala Beaufort","Escala Fahrenheit"],1),
 
   // ---------------- MÚSICA ----------------
   pt("musica","facil","Quantas cordas tem um violão clássico, tradicionalmente?",["4","5","6","7"],2),
