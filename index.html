@@ -1,148 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ScoreRaid</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScoreRaid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="app">
+  <div id="app">
 
-  <!-- ===================== BARRA LATERAL DE PLACAR (FIXA) ===================== -->
-  <aside id="barra-lateral-placar" class="oculto">
-    <div class="bl-topo">
-      <img src="assets/logo-scoreraid.png" alt="ScoreRaid" class="bl-logo">
-      <div class="bl-rodada" id="bl-rodada">Rodada 1 de 6</div>
-    </div>
-    <div class="bl-pontos-rodadas" id="bl-pontos-rodadas"></div>
-    <div class="bl-lista-grupos" id="bl-lista-grupos"></div>
-  </aside>
-
-  <!-- ===================== TELA 1: INÍCIO ===================== -->
-  <section id="tela-inicio" class="tela ativa">
-    <div class="fundo-decor"></div>
-    <div class="conteudo-inicio">
-      <div class="logo-wrapper">
-        <img src="assets/logo-scoreraid.png" alt="ScoreRaid" class="logo-principal">
-        <p class="subtitulo-jogo">Quiz de Conhecimentos Gerais</p>
+    <!-- ===================== BARRA LATERAL DE PLACAR (FIXA) ===================== -->
+    <aside id="barra-lateral-placar" class="oculto">
+      <div class="bl-topo">
+        <img src="assets/logo-scoreraid.png" alt="ScoreRaid" class="bl-logo">
+        <div class="bl-rodada" id="bl-rodada">Rodada 1 de 6</div>
       </div>
+      <div class="bl-pontos-rodadas" id="bl-pontos-rodadas"></div>
+      <div class="bl-lista-grupos" id="bl-lista-grupos"></div>
+    </aside>
 
-      <div class="cartao-equipes">
-        <h2>Configure as equipes</h2>
-        <div class="campos-equipes">
-          <div class="campo-equipe equipe-1">
-            <label for="input-equipe-1">Grupo 1</label>
-            <input type="text" id="input-equipe-1" maxlength="18" value="Equipe Ciano">
+    <!-- ===================== TELA 1: INÍCIO ===================== -->
+    <section id="tela-inicio" class="tela ativa">
+      <div class="fundo-decor"></div>
+      <div class="conteudo-inicio">
+        <div class="logo-wrapper">
+          <img src="assets/logo-scoreraid.png" alt="ScoreRaid" class="logo-principal">
+          <p class="subtitulo-jogo">Quiz de Conhecimentos Gerais</p>
+        </div>
+
+        <div class="cartao-equipes">
+          <h2>Configure as equipes</h2>
+          <div class="campos-equipes">
+            <div class="campo-equipe equipe-1">
+              <label for="input-equipe-1">Grupo 1</label>
+              <input type="text" id="input-equipe-1" maxlength="18" value="Equipe Ciano">
+            </div>
+            <div class="campo-equipe equipe-2">
+              <label for="input-equipe-2">Grupo 2</label>
+              <input type="text" id="input-equipe-2" maxlength="18" value="Equipe Coral">
+            </div>
+            <div class="campo-equipe equipe-3">
+              <label for="input-equipe-3">Grupo 3</label>
+              <input type="text" id="input-equipe-3" maxlength="18" value="Equipe Âmbar">
+            </div>
           </div>
-          <div class="campo-equipe equipe-2">
-            <label for="input-equipe-2">Grupo 2</label>
-            <input type="text" id="input-equipe-2" maxlength="18" value="Equipe Coral">
-          </div>
-          <div class="campo-equipe equipe-3">
-            <label for="input-equipe-3">Grupo 3</label>
-            <input type="text" id="input-equipe-3" maxlength="18" value="Equipe Âmbar">
+          <p class="info-regra">Cada equipe começa com <strong>30 pontos</strong> · 6 rodadas · 6 perguntas por rodada
+          </p>
+          <button id="btn-comecar" class="botao-principal">Começar Jogo 🚀</button>
+          <button id="btn-como-jogar" class="botao-secundario">📖 Como Jogar</button>
+
+          <!-- ===================== MODAL: COMO JOGAR (Google Slides) ===================== -->
+          <div id="modal-como-jogar" class="modal-apresentacao oculto">
+            <div class="apresentacao-topo">
+              <span class="apresentacao-titulo">Como Jogar</span>
+              <button id="btn-fechar-apresentacao" class="botao-fechar-apresentacao">✕</button>
+            </div>
+            <div class="apresentacao-palco">
+              <iframe id="iframe-apresentacao" src=""
+                data-src="https://docs.google.com/presentation/d/1zQr8W0oWzdNFz7qLsK6k_VZ32sdYNNH6wDWyF6dW29E/embed?start=false&loop=false&delayms=3000"
+                allowfullscreen="true" frameborder="0">
+              </iframe>
+            </div>
           </div>
         </div>
-        <p class="info-regra">Cada equipe começa com <strong>30 pontos</strong> · 6 rodadas · 6 perguntas por rodada</p>
-        <button id="btn-comecar" class="botao-principal">Começar Jogo 🚀</button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== TELA 2: PLACAR ENTRE PERGUNTAS ===================== -->
-  <section id="tela-placar" class="tela">
-    <div class="area-conteudo">
-      <div class="cabecalho-jogo">
-        <div class="indicador-rodada" id="indicador-rodada-placar">Rodada 1 de 6</div>
-      </div>
-
-      <h2 class="titulo-secao">Placar Atual</h2>
-      <div class="grade-placar" id="grade-placar"></div>
-
-      <button id="btn-proxima-pergunta" class="botao-principal botao-grande">Sortear Próximo Tema 🎡</button>
-    </div>
-  </section>
-
-  <!-- ===================== TELA 2.5: ROLETA DE TEMAS ===================== -->
-  <section id="tela-roleta" class="tela">
-    <div class="area-conteudo area-conteudo-central">
-      <h2 class="titulo-secao">Sorteando o tema...</h2>
-
-      <div class="palco-roleta">
-        <div class="ponteiro-roleta">▼</div>
-        <div class="roleta" id="roleta"></div>
-      </div>
-
-      <p class="resultado-roleta oculto" id="resultado-roleta"></p>
-      <button id="btn-girar-roleta" class="botao-principal botao-grande">Girar Roleta 🎡</button>
-      <button id="btn-ver-pergunta" class="botao-principal botao-grande oculto">Ver Pergunta ➜</button>
-    </div>
-  </section>
-
-  <!-- ===================== TELA 3: PERGUNTA ===================== -->
-  <section id="tela-pergunta" class="tela">
-    <div class="area-conteudo">
-      <div class="cabecalho-jogo">
-        <div class="indicador-rodada" id="indicador-rodada-pergunta">Rodada 1 de 6</div>
-        <div class="indicador-pergunta" id="indicador-pergunta">Pergunta 1 de 6</div>
-      </div>
-
-      <div class="barra-badges">
-        <span class="badge-tema" id="badge-tema">🧮 Matemática</span>
-        <span class="badge-tipo" id="badge-tipo">Acumulativa</span>
-        <span class="badge-valor" id="badge-valor">+10 pts</span>
-      </div>
-
-      <div class="cartao-pergunta">
-        <p class="enunciado" id="texto-enunciado">Carregando pergunta...</p>
-        <div class="grade-alternativas" id="grade-alternativas"></div>
-      </div>
-
-      <div class="area-cronometro" id="area-cronometro">
-        <div class="circulo-cronometro">
-          <span id="valor-cronometro">10</span>
+    <!-- ===================== TELA 2: PLACAR ENTRE PERGUNTAS ===================== -->
+    <section id="tela-placar" class="tela">
+      <div class="area-conteudo">
+        <div class="cabecalho-jogo">
+          <div class="indicador-rodada" id="indicador-rodada-placar">Rodada 1 de 6</div>
         </div>
-        <p class="texto-cronometro">Tempo para responder</p>
-        <button id="btn-pular-cronometro" class="botao-secundario">Encerrar tempo agora</button>
+
+        <h2 class="titulo-secao">Placar Atual</h2>
+        <div class="grade-placar" id="grade-placar"></div>
+
+        <button id="btn-proxima-pergunta" class="botao-principal botao-grande">Sortear Próximo Tema 🎡</button>
       </div>
+    </section>
 
-      <p class="aviso-vez" id="aviso-vez"></p>
+    <!-- ===================== TELA 2.5: ROLETA DE TEMAS ===================== -->
+    <section id="tela-roleta" class="tela">
+      <div class="area-conteudo area-conteudo-central">
+        <h2 class="titulo-secao">Sorteando o tema...</h2>
 
-      <div class="area-botoes-grupos" id="area-botoes-grupos"></div>
+        <div class="palco-roleta">
+          <div class="ponteiro-roleta">▼</div>
+          <div class="roleta" id="roleta"></div>
+        </div>
 
-      <button id="btn-ninguem-acertou" class="botao-secundario">Ninguém acertou</button>
-
-      <!-- Passo extra: escolher de quem roubar (Ofensiva) -->
-      <div id="painel-roubo" class="painel-roubo oculto">
-        <h3>🎯 De qual grupo <span id="nome-vencedor-roubo"></span> vai roubar pontos?</h3>
-        <div class="area-botoes-roubo" id="area-botoes-roubo"></div>
+        <p class="resultado-roleta oculto" id="resultado-roleta"></p>
+        <button id="btn-girar-roleta" class="botao-principal botao-grande">Girar Roleta 🎡</button>
+        <button id="btn-ver-pergunta" class="botao-principal botao-grande oculto">Ver Pergunta ➜</button>
       </div>
+    </section>
 
-      <button id="btn-continuar" class="botao-principal botao-grande oculto">Continuar ➜</button>
-    </div>
-  </section>
+    <!-- ===================== TELA 3: PERGUNTA ===================== -->
+    <section id="tela-pergunta" class="tela">
+      <div class="area-conteudo">
+        <div class="cabecalho-jogo">
+          <div class="indicador-rodada" id="indicador-rodada-pergunta">Rodada 1 de 6</div>
+          <div class="indicador-pergunta" id="indicador-pergunta">Pergunta 1 de 6</div>
+        </div>
 
-  <!-- ===================== TELA 4: RESULTADO FINAL ===================== -->
-  <section id="tela-final" class="tela">
-    <div id="confete-container"></div>
-    <div class="conteudo-final">
-      <img src="assets/logo-scoreraid.png" alt="ScoreRaid" class="logo-final">
-      <h2 class="titulo-vencedor">🏆 Vencedor 🏆</h2>
-      <h1 id="nome-time-vencedor" class="nome-vencedor-final"></h1>
+        <div class="barra-badges">
+          <span class="badge-tema" id="badge-tema">🧮 Matemática</span>
+          <span class="badge-tipo" id="badge-tipo">Acumulativa</span>
+          <span class="badge-valor" id="badge-valor">+10 pts</span>
+        </div>
 
-      <div class="podio" id="podio"></div>
+        <div class="cartao-pergunta">
+          <p class="enunciado" id="texto-enunciado">Carregando pergunta...</p>
+          <div class="grade-alternativas" id="grade-alternativas"></div>
+        </div>
 
-      <button id="btn-jogar-novamente" class="botao-principal botao-grande">Jogar Novamente 🔄</button>
-    </div>
-  </section>
+        <div class="area-cronometro" id="area-cronometro">
+          <div class="circulo-cronometro">
+            <span id="valor-cronometro">10</span>
+          </div>
+          <p class="texto-cronometro">Tempo para responder</p>
+          <button id="btn-pular-cronometro" class="botao-secundario">Encerrar tempo agora</button>
+        </div>
 
-</div>
+        <p class="aviso-vez" id="aviso-vez"></p>
 
-<script src="scripts.js"></script>
+        <div class="area-botoes-grupos" id="area-botoes-grupos"></div>
+
+        <button id="btn-ninguem-acertou" class="botao-secundario">Ninguém acertou</button>
+
+        <!-- Passo extra: escolher de quem roubar (Ofensiva) -->
+        <div id="painel-roubo" class="painel-roubo oculto">
+          <h3>🎯 De qual grupo <span id="nome-vencedor-roubo"></span> vai roubar pontos?</h3>
+          <div class="area-botoes-roubo" id="area-botoes-roubo"></div>
+        </div>
+
+        <button id="btn-continuar" class="botao-principal botao-grande oculto">Continuar ➜</button>
+      </div>
+    </section>
+
+    <!-- ===================== TELA 4: RESULTADO FINAL ===================== -->
+    <section id="tela-final" class="tela">
+      <div id="confete-container"></div>
+      <div class="conteudo-final">
+        <img src="assets/logo-scoreraid.png" alt="ScoreRaid" class="logo-final">
+        <h2 class="titulo-vencedor">🏆 Vencedor 🏆</h2>
+        <h1 id="nome-time-vencedor" class="nome-vencedor-final"></h1>
+
+        <div class="podio" id="podio"></div>
+
+        <button id="btn-jogar-novamente" class="botao-principal botao-grande">Jogar Novamente 🔄</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="scripts.js"></script>
 </body>
+
 </html>

@@ -736,3 +736,24 @@ document.getElementById("btn-jogar-novamente").addEventListener("click", () => {
   mostrarTela("inicio");
 });
 
+/* ----------------------------------------------------------------------
+   14) MODAL: APRESENTAÇÃO "COMO JOGAR" (Google Slides)
+---------------------------------------------------------------------- */
+const modalApresentacao = document.getElementById("modal-como-jogar");
+const iframeApresentacao = document.getElementById("iframe-apresentacao");
+
+function abrirApresentacao(){
+  iframeApresentacao.src = iframeApresentacao.dataset.src;
+  modalApresentacao.classList.remove("oculto");
+}
+
+function fecharApresentacao(){
+  modalApresentacao.classList.add("oculto");
+}
+
+document.getElementById("btn-como-jogar").addEventListener("click", abrirApresentacao);
+document.getElementById("btn-fechar-apresentacao").addEventListener("click", fecharApresentacao);
+
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape" && !modalApresentacao.classList.contains("oculto")) fecharApresentacao();
+});
