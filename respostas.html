@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScoreRaid — Resposta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/logo-scoreraid.png">
+  <style>
+    :root {
+      --fundo-1: #0a0e1a;
+      --fundo-2: #0f1730;
+      --fundo-3: #142042;
+      --card-bg: #131a30;
+      --card-borda: #263255;
+      --verde-ok: #2ee6a6;
+      --ambar: #f6a723;
+      --texto: #f4f6fb;
+      --texto-fraco: #9aa7d1;
+      --fonte-principal: "Exo 2", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--fonte-principal);
+      color: var(--texto);
+      background: radial-gradient(ellipse at top, var(--fundo-3) 0%, var(--fundo-2) 45%, var(--fundo-1) 100%);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6vw;
+    }
+
+    .cartao-resposta {
+      width: 100%;
+      max-width: 760px;
+      background: #0a0f22;
+      border-radius: 20px;
+      padding: clamp(30px, 4.5vw, 56px) clamp(22px, 4vw, 48px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, .55), inset 0 0 0 2px #05070f;
+      text-align: center;
+      animation: aparecer .4s ease;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .rotulo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--texto-fraco);
+      margin-bottom: 18px;
+    }
+
+    .enunciado {
+      font-size: clamp(20px, 2.6vw, 28px);
+      font-weight: 800;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      color: #fbfbff;
+    }
+
+    .resposta-certa {
+      display: inline-block;
+      background: linear-gradient(180deg, #0f3d31, #0a2620);
+      border: 2px solid var(--verde-ok);
+      box-shadow: 0 0 26px rgba(46, 230, 166, .35);
+      border-radius: 14px;
+      padding: 16px 28px;
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-weight: 800;
+      color: var(--verde-ok);
+    }
+
+    .mensagem-vazia {
+      font-size: clamp(20px, 2.6vw, 28px);
+      font-weight: 700;
+      color: var(--texto-fraco);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cartao-resposta" id="cartao-resposta">
+    <p class="mensagem-vazia" id="mensagem-vazia">Nenhuma pergunta a mostrar.</p>
+  </div>
+
+  <script>
+    const CHAVE_LOCALSTORAGE_RODADA = "scoreraid_rodada_atual";
+
+    function renderizarConteudo(dados) {
+      const cartao = document.getElementById("cartao-resposta");
+
+      if (!dados) {
+        cartao.innerHTML = `<p class="mensagem-vazia">Nenhuma pergunta a mostrar.</p>`;
+        return;
+      }
+
+      cartao.innerHTML = `
+        <p class="rotulo">Resposta correta</p>
+        <p class="enunciado">${dados.enunciado}</p>
+        <span class="resposta-certa">${dados.resposta}</span>
+      `;
+    }
+
+    function atualizarResposta() {
+      let dados = null;
+      try {
+        const bruto = localStorage.getItem(CHAVE_LOCALSTORAGE_RODADA);
+        dados = bruto ? JSON.parse(bruto) : null;
+      } catch (e) {
+        dados = null;
+      }
+      renderizarConteudo(dados);
+    }
+
+    // Lê o estado assim que a página abre (mesmo se a pergunta já estava em exibição antes)
+    atualizarResposta();
+
+    // Atualiza em tempo real quando o index.html transmitir uma nova pergunta
+    window.addEventListener("storage", (e) => {
+      if (e.key === CHAVE_LOCALSTORAGE_RODADA) atualizarResposta();
+    });
+  </script>
+</body>
+
+</html>

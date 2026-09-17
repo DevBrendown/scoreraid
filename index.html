@@ -9,11 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/logo-scoreraid.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
   <div id="app">
 
     <!-- ===================== BARRA LATERAL DE PLACAR (FIXA) ===================== -->
@@ -55,20 +55,6 @@
           </p>
           <button id="btn-comecar" class="botao-principal">Começar Jogo 🚀</button>
           <button id="btn-como-jogar" class="botao-secundario">📖 Como Jogar</button>
-
-          <!-- ===================== MODAL: COMO JOGAR (Google Slides) ===================== -->
-          <div id="modal-como-jogar" class="modal-apresentacao oculto">
-            <div class="apresentacao-topo">
-              <span class="apresentacao-titulo">Como Jogar</span>
-              <button id="btn-fechar-apresentacao" class="botao-fechar-apresentacao">✕</button>
-            </div>
-            <div class="apresentacao-palco">
-              <iframe id="iframe-apresentacao" src=""
-                data-src="https://docs.google.com/presentation/d/1zQr8W0oWzdNFz7qLsK6k_VZ32sdYNNH6wDWyF6dW29E/embed?start=false&loop=false&delayms=3000"
-                allowfullscreen="true" frameborder="0">
-              </iframe>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -87,6 +73,28 @@
       </div>
     </section>
 
+    <!-- ===================== TELA 2.4: EVENTO ESPECIAL ===================== -->
+    <section id="tela-evento" class="tela">
+      <div class="area-conteudo area-conteudo-central">
+        <div class="banner-evento" id="banner-evento">
+          <span class="banner-evento-titulo">🎲 Evento Especial!</span>
+          <span class="banner-evento-grupo" id="banner-evento-grupo">Vez do Grupo</span>
+        </div>
+
+        <p class="instrucao-evento" id="instrucao-evento">Escolha uma carta ou pule o evento.</p>
+
+        <div class="grade-cartas-evento" id="grade-cartas-evento"></div>
+
+        <div class="acoes-evento">
+          <button id="btn-pular-evento" class="botao-secundario">Pular Evento</button>
+        </div>
+
+        <p class="resultado-evento oculto" id="resultado-evento"></p>
+
+        <button id="btn-continuar-evento" class="botao-principal botao-grande oculto">Continuar ➜</button>
+      </div>
+    </section>
+
     <!-- ===================== TELA 2.5: ROLETA DE TEMAS ===================== -->
     <section id="tela-roleta" class="tela">
       <div class="area-conteudo area-conteudo-central">
@@ -100,6 +108,15 @@
         <p class="resultado-roleta oculto" id="resultado-roleta"></p>
         <button id="btn-girar-roleta" class="botao-principal botao-grande">Girar Roleta 🎡</button>
         <button id="btn-ver-pergunta" class="botao-principal botao-grande oculto">Ver Pergunta ➜</button>
+      </div>
+    </section>
+
+    <!-- ===================== TELA 2.6: CARTAS DE TEMA ===================== -->
+    <section id="tela-cartas" class="tela">
+      <div class="area-conteudo area-conteudo-central">
+        <h2 class="titulo-secao">Escolha o tema...</h2>
+        <div class="grade-cartas-temas" id="grade-cartas-temas"></div>
+        <button id="btn-ver-pergunta-cartas" class="botao-principal botao-grande oculto">Ver Pergunta ➜</button>
       </div>
     </section>
 
@@ -157,12 +174,54 @@
         <div class="podio" id="podio"></div>
 
         <button id="btn-jogar-novamente" class="botao-principal botao-grande">Jogar Novamente 🔄</button>
+        <button id="btn-ver-frase-final" class="botao-secundario">✉️ Ver Mensagem Final</button>
       </div>
     </section>
 
+    <!-- ===================== TELA: FRASE FINAL ===================== -->
+    <section id="tela-frase" class="tela">
+      <div class="palco-frase-final">
+        <div class="grade-valores">
+          <div class="cartao-valor">
+            <span class="icone-valor">🤝</span>
+            <span class="nome-valor">Trabalho em Equipe</span>
+          </div>
+          <div class="cartao-valor">
+            <span class="icone-valor">💬</span>
+            <span class="nome-valor">Comunicabilidade</span>
+          </div>
+          <div class="cartao-valor">
+            <span class="icone-valor">⚖️</span>
+            <span class="nome-valor">Ética</span>
+          </div>
+        </div>
+        <button id="btn-revelar-frase" class="botao-principal botao-grande">Revelar Mensagem 📜</button>
+        <div id="frase-final-texto" class="frase-final-texto oculto">
+          <p>No mercado de trabalho, nem sempre vão jogar limpo.<br>
+            Às vezes, alguém tentará tirar seus pontos.<br>
+            Mas lembre-se: perder pontos não significa perder o jogo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MODAL: COMO JOGAR (Google Slides) ===================== -->
+    <div id="modal-como-jogar" class="modal-apresentacao oculto">
+      <div class="apresentacao-topo">
+        <span class="apresentacao-titulo">Como Jogar</span>
+        <button id="btn-fechar-apresentacao" class="botao-fechar-apresentacao">✕</button>
+      </div>
+      <div class="apresentacao-palco">
+        <iframe id="iframe-apresentacao" src=""
+          data-src="https://docs.google.com/presentation/d/1zQr8W0oWzdNFz7qLsK6k_VZ32sdYNNH6wDWyF6dW29E/embed?start=false&loop=false&delayms=3000"
+          allowfullscreen="true" frameborder="0">
+        </iframe>
+      </div>
+    </div>
+
   </div>
 
-  <script src="scripts.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

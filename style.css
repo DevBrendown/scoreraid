@@ -1,5 +1,5 @@
 /* ======================================================
-   SCORERAID — ESTILO GERAL (v2)
+   SCORERAID — ESTILO GERAL (v3)
    Paleta inspirada na logo: ciano, coral/vermelho, âmbar e navy.
 ====================================================== */
 
@@ -400,6 +400,83 @@ body.com-sidebar .tela{ padding-right: calc(var(--largura-sidebar) + 6vw); }
 }
 
 /* ======================================================
+   TELA CARTAS DE TEMA (com flip)
+====================================================== */
+.grade-cartas-temas{
+  display:flex;
+  gap: 24px;
+  justify-content:center;
+  flex-wrap: wrap;
+  margin: 10px 0 26px;
+}
+.cartao-tema{
+  width: 180px;
+  height: 220px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  perspective: 1200px;
+}
+.cartao-tema.travada{ cursor: default; }
+
+.cartao-tema-interior{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  transform-style: preserve-3d;
+}
+.cartao-tema.virada .cartao-tema-interior{ transform: rotateY(180deg); }
+
+.cartao-tema-face{
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 14px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 2px solid var(--card-borda);
+  transition: border-color .18s, box-shadow .18s;
+}
+
+/* Traseira (visível por padrão) — logo do ScoreRaid */
+.cartao-tema-verso{
+  background: linear-gradient(160deg, #141c38, #0a0e1e);
+}
+.cartao-tema-verso img{
+  width: 72px;
+  height: auto;
+  opacity: .9;
+  filter: drop-shadow(0 0 12px rgba(23,163,194,.35));
+}
+.cartao-tema:not(.virada):not(.travada):hover .cartao-tema-verso{
+  border-color: var(--ambar);
+  box-shadow: 0 12px 30px rgba(246,167,35,.25);
+}
+
+/* Frente (revelada ao virar) — tema sorteado */
+.cartao-tema-frente{
+  background: linear-gradient(180deg, #141c38, #0d1226);
+  transform: rotateY(180deg);
+}
+.cartao-tema.selecionada .cartao-tema-frente{
+  border-color: var(--verde-ok);
+  box-shadow: 0 0 26px rgba(46,230,166,.4);
+}
+.cartao-tema-frente .icone-tema{ font-size: 48px; }
+.cartao-tema-frente .nome-tema{ font-size: 15px; font-weight: 800; text-align:center; padding: 0 10px; }
+
+@media (max-width: 760px){
+  .cartao-tema{ width: 130px; height: 170px; }
+  .cartao-tema-verso img{ width: 52px; }
+  .cartao-tema-frente .icone-tema{ font-size: 36px; }
+}
+
+/* ======================================================
    TELA PERGUNTA — PALCO DE PROGRAMA DE TV
    Conceito: um estúdio escuro com holofotes cruzados, o "telão"
    central emoldurado por luzes de marquise (chase lights), placas
@@ -674,37 +751,6 @@ body.com-sidebar .tela{ padding-right: calc(var(--largura-sidebar) + 6vw); }
 .posicao-podio .pts{ font-size: 30px; font-weight: 900; color: var(--ambar); }
 
 /* ======================================================
-   RESPONSIVO
-====================================================== */
-@media (max-width: 900px){
-  body.com-sidebar .tela{ padding-right: 6vw; padding-bottom: 210px; }
-  #barra-lateral-placar{
-    top: auto; bottom: 0; left: 0; right: 0;
-    width: 100%; height: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-left: none;
-    border-top: 1px solid var(--card-borda);
-    padding: 12px 16px;
-    overflow-x: auto;
-  }
-  .bl-topo{ flex-direction: row; gap: 10px; }
-  .bl-logo{ width: 40px; }
-  .bl-pontos-rodadas{ display:none; }
-  .bl-lista-grupos{ flex-direction: row; margin-top: 0; }
-  .bl-card-grupo{ padding: 8px 12px; min-width: 110px; }
-  .bl-pontos-grupo{ font-size: 22px; }
-}
-@media (max-width: 760px){
-  .campos-equipes{ grid-template-columns: 1fr; }
-  .grade-placar{ grid-template-columns: 1fr; }
-  .grade-alternativas{ grid-template-columns: 1fr; }
-  .area-botoes-grupos{ grid-template-columns: 1fr; }
-  .podio{ flex-direction: column; align-items:center; }
-}
-
-/* ======================================================
    MODAL — APRESENTAÇÃO "COMO JOGAR" (Google Slides)
 ====================================================== */
 .modal-apresentacao{
@@ -762,4 +808,233 @@ body.com-sidebar .tela{ padding-right: calc(var(--largura-sidebar) + 6vw); }
   height: 100%;
   min-height: 60vh;
   border: none;
+}
+
+/* ======================================================
+   RESPONSIVO
+====================================================== */
+@media (max-width: 900px){
+  body.com-sidebar .tela{ padding-right: 6vw; padding-bottom: 210px; }
+  #barra-lateral-placar{
+    top: auto; bottom: 0; left: 0; right: 0;
+    width: 100%; height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-left: none;
+    border-top: 1px solid var(--card-borda);
+    padding: 12px 16px;
+    overflow-x: auto;
+  }
+  .bl-topo{ flex-direction: row; gap: 10px; }
+  .bl-logo{ width: 40px; }
+  .bl-pontos-rodadas{ display:none; }
+  .bl-lista-grupos{ flex-direction: row; margin-top: 0; }
+  .bl-card-grupo{ padding: 8px 12px; min-width: 110px; }
+  .bl-pontos-grupo{ font-size: 22px; }
+}
+@media (max-width: 760px){
+  .campos-equipes{ grid-template-columns: 1fr; }
+  .grade-placar{ grid-template-columns: 1fr; }
+  .grade-alternativas{ grid-template-columns: 1fr; }
+  .area-botoes-grupos{ grid-template-columns: 1fr; }
+  .podio{ flex-direction: column; align-items:center; }
+}
+
+#tela-frase{ padding: 0; }
+.palco-frase-final{
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(5,7,15,.72), rgba(5,7,15,.85)), url("assets/fundofinal.png") center/cover no-repeat;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 30px;
+  padding: 6vw;
+  text-align:center;
+}
+.frase-final-texto{
+  max-width: 700px;
+  font-size: clamp(18px, 2.4vw, 24px);
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--texto);
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  animation: aparecer .6s ease;
+}
+.frase-final-texto p + p{ margin-top: 22px; }
+
+/* ======================================================
+   CARDS DE VALORES (tela da frase final)
+====================================================== */
+.grade-valores{
+  display:flex;
+  gap: 22px;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+.cartao-valor{
+  background: var(--card-bg);
+  border: 1px solid var(--card-borda);
+  border-radius: 18px;
+  padding: 26px 24px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 12px;
+  min-width: 160px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.4);
+  animation: aparecer .5s ease;
+}
+.icone-valor{ font-size: 40px; filter: drop-shadow(0 0 10px rgba(23,163,194,.35)); }
+.nome-valor{
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--texto);
+  text-align: center;
+}
+
+@media (max-width: 760px){
+  .grade-valores{ gap: 14px; }
+  .cartao-valor{ min-width: 130px; padding: 20px 16px; }
+  .icone-valor{ font-size: 32px; }
+  .nome-valor{ font-size: 13px; }
+}
+
+/* ======================================================
+   EVENTO ESPECIAL
+====================================================== */
+.banner-evento{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 6px;
+  padding: 22px 40px;
+  border-radius: 20px;
+  margin-bottom: 26px;
+  animation: banner-surgir .5s cubic-bezier(.2,.9,.3,1), banner-pulsar 1.6s ease-in-out infinite 0.5s;
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+@keyframes banner-surgir{
+  from{ opacity:0; transform: scale(.7) translateY(-30px); }
+  to{ opacity:1; transform: scale(1) translateY(0); }
+}
+@keyframes banner-pulsar{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.03); }
+}
+.banner-evento-titulo{
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(10,14,26,.75);
+}
+.banner-evento-grupo{
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  color: #0a0e1a;
+  text-shadow: 0 2px 0 rgba(255,255,255,.25);
+}
+.banner-evento.cor-1{ background: linear-gradient(135deg, var(--ciano), var(--ciano-forte)); box-shadow: 0 0 50px rgba(23,163,194,.5); }
+.banner-evento.cor-2{ background: linear-gradient(135deg, var(--coral), var(--coral-forte)); box-shadow: 0 0 50px rgba(255,77,94,.5); }
+.banner-evento.cor-3{ background: linear-gradient(135deg, var(--ambar), var(--ambar-forte)); box-shadow: 0 0 50px rgba(246,167,35,.5); }
+
+.instrucao-evento{
+  text-align:center;
+  color: var(--texto-fraco);
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.grade-cartas-evento{
+  display:flex;
+  gap: 28px;
+  justify-content:center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.cartao-evento{
+  width: 190px;
+  height: 240px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  perspective: 1200px;
+}
+.cartao-evento.travada{ cursor: default; }
+
+.cartao-evento-interior{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
+  transform-style: preserve-3d;
+}
+.cartao-evento.virada .cartao-evento-interior{ transform: rotateY(180deg); }
+
+.cartao-evento-face{
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 12px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 2px solid var(--card-borda);
+  transition: border-color .18s, box-shadow .18s;
+}
+
+.cartao-evento-verso{
+  background: linear-gradient(160deg, #141c38, #0a0e1e);
+  font-size: 54px;
+  color: var(--texto-fraco);
+}
+.cartao-evento:not(.virada):not(.travada):hover .cartao-evento-verso{
+  border-color: var(--ambar);
+  box-shadow: 0 12px 30px rgba(246,167,35,.25);
+}
+
+.cartao-evento-frente{
+  background: linear-gradient(180deg, #141c38, #0d1226);
+  transform: rotateY(180deg);
+}
+.cartao-evento-frente .icone-evento{ font-size: 44px; }
+.cartao-evento-frente .valor-evento{ font-size: 22px; font-weight: 900; }
+
+.cartao-evento.ganho .cartao-evento-frente{
+  border-color: var(--verde-ok);
+  box-shadow: 0 0 26px rgba(46,230,166,.4);
+}
+.cartao-evento.ganho .valor-evento{ color: var(--verde-ok); }
+
+.cartao-evento.perda .cartao-evento-frente{
+  border-color: var(--vermelho);
+  box-shadow: 0 0 26px rgba(255,71,87,.4);
+}
+.cartao-evento.perda .valor-evento{ color: var(--vermelho); }
+
+.cartao-evento.escolhida .cartao-evento-frente{ transform: rotateY(180deg) scale(1.06); }
+
+.acoes-evento{ display:flex; justify-content:center; }
+
+.resultado-evento{
+  text-align:center;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 6px 0 4px;
+}
+
+@media (max-width: 760px){
+  .grade-cartas-evento{ gap: 16px; }
+  .cartao-evento{ width: 140px; height: 180px; }
+  .cartao-evento-verso{ font-size: 38px; }
+  .cartao-evento-frente .icone-evento{ font-size: 32px; }
+  .cartao-evento-frente .valor-evento{ font-size: 17px; }
 }
