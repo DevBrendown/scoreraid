@@ -1038,3 +1038,18 @@ body.com-sidebar .tela{ padding-right: calc(var(--largura-sidebar) + 6vw); }
   .cartao-evento-frente .icone-evento{ font-size: 32px; }
   .cartao-evento-frente .valor-evento{ font-size: 17px; }
 }
+
+.dica-mestre{
+  position: fixed;
+  bottom: 6px;
+  left: 6px;
+  z-index: 999;
+  color: rgba(234, 236, 241, 0.55);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: .2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .1s;
+}
+.dica-mestre.visivel{ opacity: 1; }

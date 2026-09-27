@@ -11,7 +11,7 @@ const PONTOS_INICIAIS = 30;
 const TOTAL_RODADAS = 6;
 const PERGUNTAS_POR_RODADA = 6;
 const VALOR_OFENSIVA = 20;
-const DURACAO_CRONOMETRO = 10;
+const DURACAO_CRONOMETRO = 6;
 const PESO_ANIME = 2; // anime tem o dobro de chance de aparecer que os outros temas
 const TOTAL_PERGUNTAS_DESEMPATE = 3;
 const CHAVE_LOCALSTORAGE_RODADA = "scoreraid_rodada_atual";
@@ -546,6 +546,9 @@ function iniciarTelaPergunta() {
 
   mostrarTela("pergunta");
   iniciarCronometro();
+
+  document.getElementById("dica-mestre-texto").textContent =
+  `Resposta: ${letras[pergunta.correta]} — ${pergunta.alternativas[pergunta.correta]}`;
 }
 
 /* ---- Cronômetro de 10s antes de liberar a seleção de acerto/erro ---- */
@@ -1027,4 +1030,15 @@ document.getElementById("btn-fechar-apresentacao").addEventListener("click", fec
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !modalApresentacao.classList.contains("oculto")) fecharApresentacao();
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "F2") {
+    document.getElementById("dica-mestre").classList.add("visivel");
+  }
+});
+window.addEventListener("keyup", (e) => {
+  if (e.key === "F2") {
+    document.getElementById("dica-mestre").classList.remove("visivel");
+  }
 });
